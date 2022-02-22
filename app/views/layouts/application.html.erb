@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Meta data -->
+    <title>App name</title>
+    <meta name="Language" content="fr" />
+    <meta name="description" content="app description">
+
+    <!-- csrf & csp -->
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <!-- import CSS & JS files -->
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <!-- notices & alerts -->
+    <%= render 'shared/flashes' %>
+
+    <!-- navbar -->
+    <% unless devise_controller? %>
+      <%= render 'shared/navbar' %>
+    <% end %>
+
+    <!-- main content -->
+    <main role="main">
+      <%= yield %>
+    </main>
+
+    <!-- footer -->
+    <% unless devise_controller? %>
+      <%= render 'shared/footer' %>
+    <% end %>
+
+    <!-- noscript tag when JS brower is OFF -->
+    <noscript>Votre navigateur web a bloqué le JavaScript. C'est important de le débloquer pour profiter de toutes les fonctionnallités de ce site web !</noscript>
+  </body>
+</html>

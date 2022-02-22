@@ -1,0 +1,58 @@
+<div class="container">
+  <!-- link back -->
+  <p class="mt-5">
+    <%= link_to home_path, class: "btn btn-primary" do %>
+      <i class="fas fa-chevron-left"></i> Retour
+    <% end %>
+  </p>
+
+  <div class="row">
+
+    <div class="col">
+    </div>
+
+    <div class="col-12 col-md-6 mb-5">
+      <div class="border rounded px-4 pt-4">
+        <h1 class="text-center mb-5">Modifier mon compte</h1>
+
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= f.error_notification %>
+
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+          <% end %>
+
+          <div class="form-inputs">
+            <%= f.input :email,
+                        required: true,
+                        label: 'Mon email',
+                        input_html: { autocomplete: 'email' } %>
+            <%= f.input :password,
+                        hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length) + " (ne remplissez pas ce champ si vous souhaitez conserver votre mot de passe)",
+                        required: false,
+                        label: 'Nouveau mot de passe',
+                        input_html: { autocomplete: 'new-password' } %>
+            <%= f.input :password_confirmation,
+                        hint: 'ne remplissez pas ce champ si vous souhaitez conserver votre mot de passe',
+                        required: false,
+                        label: 'Confirmation du nouveau mot de passe',
+                        input_html: { autocomplete: 'new-password' } %>
+            <%= f.input :current_password,
+                        hint: 'obligatoire pour toutes modifications de votre profil',
+                        required: true,
+                        label: 'Mot de passe actuel',
+                        input_html: { autocomplete: 'current_password' } %>
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit, 'Mettre à jour', class: "btn btn-primary font-weight-bold button-text w-100 my-3" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col">
+    </div>
+
+  </div>
+</div>
